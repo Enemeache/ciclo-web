@@ -104,6 +104,31 @@
   to { background-position: var(--bg-size) center; }
 }
 
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
+
+@keyframes ripple-out {
+  0%   { transform: scale(0.7); opacity: 0.6; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px 2px rgba(52,211,153,0.55); }
+  50%       { box-shadow: 0 0 18px 6px rgba(52,211,153,0.25); }
+}
+
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes beam-flow {
+  from { background-position: -200% 0; }
+  to   { background-position: 200% 0; }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

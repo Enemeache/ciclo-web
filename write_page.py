@@ -1,4 +1,4 @@
-"use client";
+content = r'''"use client";
 
 import { cn } from "@/lib/utils";
 import { AnimatedGradientText } from "@/components/magicui/animated-gradient-text";
@@ -779,3 +779,9 @@ export default function Home() {
     </main>
   );
 }
+'''
+
+with open("app/page.tsx", "w", encoding="utf-8") as f:
+    f.write(content)
+
+print("page.tsx written successfully")
