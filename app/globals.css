@@ -129,6 +129,63 @@
   to   { background-position: 200% 0; }
 }
 
+/* ── Aurora rotating border ────────────────────────────────── */
+@property --aurora-a {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes aurora-rotate {
+  to { --aurora-a: 360deg; }
+}
+
+.aurora-spin {
+  animation: aurora-rotate 5s linear infinite;
+}
+.aurora-spin-slow {
+  animation: aurora-rotate 9s linear infinite;
+}
+.aurora-spin-fast {
+  animation: aurora-rotate 3s linear infinite;
+}
+
+/* ── HUD scanlines overlay ──────────────────────────────────── */
+.scanlines {
+  position: relative;
+}
+.scanlines::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.018) 3px,
+    rgba(0, 0, 0, 0.018) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ── Corner accent brackets ─────────────────────────────────── */
+.corner-tl, .corner-tr, .corner-bl, .corner-br {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+.corner-tl { top: 0; left: 0;  border-top: 1.5px solid #22d3ee; border-left:  1.5px solid #22d3ee; }
+.corner-tr { top: 0; right: 0; border-top: 1.5px solid #22d3ee; border-right: 1.5px solid #22d3ee; }
+.corner-bl { bottom: 0; left: 0;  border-bottom: 1.5px solid #22d3ee; border-left:  1.5px solid #22d3ee; }
+.corner-br { bottom: 0; right: 0; border-bottom: 1.5px solid #22d3ee; border-right: 1.5px solid #22d3ee; }
+.group:hover .corner-tl,
+.group:hover .corner-tr,
+.group:hover .corner-bl,
+.group:hover .corner-br { opacity: 1; }
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
