@@ -194,13 +194,23 @@
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
     overflow-x: hidden;
+    max-width: 100vw;
     -webkit-text-size-adjust: 100%;
   }
   html {
     @apply font-sans;
     scroll-behavior: smooth;
     overflow-x: hidden;
+    max-width: 100vw;
   }
+}
+
+/* iOS Safari: force clip on overflow containers */
+.clip-ios {
+  overflow: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  contain: layout;
 }
 
 /* Safe area for iPhone notch / home bar */

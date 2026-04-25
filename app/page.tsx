@@ -197,7 +197,7 @@ export default function Home() {
   };
 
   return (
-    <main className="scanlines relative overflow-hidden bg-[oklch(0.08_0_0)]">
+    <main className="scanlines relative w-full max-w-[100vw] overflow-hidden bg-[oklch(0.08_0_0)]" style={{ WebkitTransform: "translateZ(0)" }}>
 
       <ScrollRobot />
 
@@ -264,15 +264,15 @@ export default function Home() {
 
       {/* ── HERO ── */}
       <section id="inicio"
-        className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-5 pt-24 text-center">
+        className="relative flex min-h-[100dvh] w-full flex-col items-center justify-center overflow-hidden px-5 pt-24 text-center">
         <Particles className="absolute inset-0 z-0" />
         <DotPattern className="absolute inset-0 opacity-[0.15]" width={28} height={28} />
 
-        {/* Ripple rings */}
+        {/* Ripple rings — responsive so they don't overflow on iPhone */}
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center" style={{ zIndex: 0 }}>
           {[0, 1.5, 3].map((delay, i) => (
             <div key={i} className="absolute rounded-full border border-cyan-500/15"
-              style={{ width: 440, height: 440, animation: "ripple-out 5s ease-out infinite", animationDelay: `${delay}s` }} />
+              style={{ width: "min(440px, 90vw)", height: "min(440px, 90vw)", animation: "ripple-out 5s ease-out infinite", animationDelay: `${delay}s` }} />
           ))}
         </div>
 
@@ -284,7 +284,7 @@ export default function Home() {
         {/* Fade to black bottom */}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[oklch(0.08_0_0)]" />
 
-        <div className="relative z-10 flex max-w-5xl flex-col items-center gap-5 md:gap-6">
+        <div className="relative z-10 flex w-full max-w-5xl flex-col items-center gap-5 px-1 md:gap-6 md:px-0">
           <BlurFade delay={0.1}>
             <AnimatedGradientText>
               <GlowDot />
@@ -365,7 +365,7 @@ export default function Home() {
       </section>
 
       {/* ── INDUSTRIES MARQUEE ── */}
-      <section className="border-t border-white/[0.06] py-8 md:py-10">
+      <section className="w-full overflow-hidden border-t border-white/[0.06] py-8 md:py-10">
         <p className="mb-6 text-center font-mono text-[10px] uppercase tracking-[0.22em] text-white/25">
           // industrias que ya operan con IA
         </p>
@@ -381,7 +381,7 @@ export default function Home() {
       </section>
 
       {/* ── PROBLEMA / SERVICIOS ── */}
-      <section id="servicios" className="relative py-16 px-5 md:py-24 md:px-6">
+      <section id="servicios" className="relative w-full overflow-hidden py-16 px-5 md:py-24 md:px-6">
         <div className="mx-auto max-w-6xl">
           <BlurFade inView>
             <div className="mb-10 text-center md:mb-14">
@@ -414,7 +414,7 @@ export default function Home() {
       </section>
 
       {/* ── METODOLOGÍA CICLO ── */}
-      <section id="metodo" className="relative py-16 px-5 md:py-24 md:px-6">
+      <section id="metodo" className="relative w-full overflow-hidden py-16 px-5 md:py-24 md:px-6">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-950/8 to-transparent" />
         <div className="relative mx-auto max-w-6xl">
           <BlurFade inView>
@@ -456,7 +456,7 @@ export default function Home() {
       </section>
 
       {/* ── CASOS ── */}
-      <section id="casos" className="py-16 px-5 md:py-24 md:px-6">
+      <section id="casos" className="w-full overflow-hidden py-16 px-5 md:py-24 md:px-6">
         <div className="mx-auto max-w-6xl">
           <BlurFade inView>
             <div className="mb-10 text-center md:mb-14">
@@ -490,7 +490,7 @@ export default function Home() {
       </section>
 
       {/* ── DIFERENCIADORES ── */}
-      <section id="diferenciadores" className="relative py-16 px-5 md:py-24 md:px-6">
+      <section id="diferenciadores" className="relative w-full overflow-hidden py-16 px-5 md:py-24 md:px-6">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-green-950/8 to-transparent" />
         <div className="relative mx-auto max-w-6xl">
           <BlurFade inView>
@@ -544,7 +544,7 @@ export default function Home() {
       </section>
 
       {/* ── MÉTRICAS ── */}
-      <section className="py-16 px-5 md:py-20 md:px-6">
+      <section className="w-full overflow-hidden py-16 px-5 md:py-20 md:px-6">
         <div className="mx-auto max-w-5xl">
           <BlurFade inView>
             <AuroraBorder speed="slow" colors={["rgba(34,211,238,0.7)", "rgba(74,222,128,0.5)"]}
@@ -599,7 +599,7 @@ export default function Home() {
       </section>
 
       {/* ── CÓMO EMPEZAR ── */}
-      <section className="relative py-16 px-5 md:py-24 md:px-6">
+      <section className="relative w-full overflow-hidden py-16 px-5 md:py-24 md:px-6">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-950/6 to-transparent" />
         <div className="relative mx-auto max-w-5xl">
           <BlurFade inView>
@@ -636,7 +636,7 @@ export default function Home() {
       </section>
 
       {/* ── CTA / CONTACTO ── */}
-      <section id="contacto" className="relative py-16 px-5 md:py-24 md:px-6">
+      <section id="contacto" className="relative w-full overflow-hidden py-16 px-5 md:py-24 md:px-6">
         <div className="absolute inset-0 bg-gradient-to-t from-[oklch(0.06_0_0)] to-transparent" />
         <div className="relative mx-auto max-w-4xl">
           <BlurFade inView>
