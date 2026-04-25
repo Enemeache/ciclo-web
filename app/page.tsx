@@ -15,6 +15,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import {
   ArrowRight, BarChart3, Bot, Brain, Calendar, CheckCircle2,
   ChevronRight, Cpu, Globe, Layers, LineChart, Mail,
@@ -150,7 +151,7 @@ export default function Home() {
   const [menuOpen, setMenuOpen]   = useState(false);
   const [scrolled, setScrolled]   = useState(false);
   const [typingText, setTypingText] = useState("");
-  const [email, setEmail]         = useState("");
+  // email state removed — CTA now links to /apply
   const typingRef = useRef({ phrase: 0, charIndex: 0, deleting: false });
 
   useEffect(() => {
@@ -221,10 +222,12 @@ export default function Home() {
           </div>
 
           <div className="flex items-center gap-3">
-            <ShimmerButton shimmerColor="#22d3ee" background="oklch(0.12 0 0)"
-              className="hidden text-sm font-medium sm:flex" onClick={() => handleNav("#contacto")}>
-              Agendá diagnóstico <ChevronRight className="ml-1 h-4 w-4" />
-            </ShimmerButton>
+            <Link href="/apply">
+              <ShimmerButton shimmerColor="#22d3ee" background="oklch(0.12 0 0)"
+                className="hidden text-sm font-medium sm:flex">
+                Agendá diagnóstico <ChevronRight className="ml-1 h-4 w-4" />
+              </ShimmerButton>
+            </Link>
             <button
               className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white transition-colors hover:bg-white/10 md:hidden"
               onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
@@ -246,10 +249,12 @@ export default function Home() {
                   </button>
                 ))}
                 <div className="mt-3 border-t border-white/5 pt-3">
-                  <ShimmerButton shimmerColor="#22d3ee" background="oklch(0.14 0.05 168)" borderRadius="12px"
-                    className="w-full justify-center py-3 text-sm font-semibold" onClick={() => handleNav("#contacto")}>
-                    Agendá tu diagnóstico gratuito <ArrowRight className="ml-2 h-4 w-4" />
-                  </ShimmerButton>
+                  <Link href="/apply">
+                    <ShimmerButton shimmerColor="#22d3ee" background="oklch(0.14 0.05 168)" borderRadius="12px"
+                      className="w-full justify-center py-3 text-sm font-semibold">
+                      Agendá tu diagnóstico gratuito <ArrowRight className="ml-2 h-4 w-4" />
+                    </ShimmerButton>
+                  </Link>
                 </div>
               </div>
             </motion.div>
@@ -324,11 +329,12 @@ export default function Home() {
 
           <BlurFade delay={0.4}>
             <div className="flex flex-col items-center gap-3 sm:flex-row sm:gap-4">
-              <ShimmerButton shimmerColor="#22d3ee" background="oklch(0.14 0.05 168)" borderRadius="12px"
-                className="w-full px-7 py-4 text-sm font-semibold sm:w-auto sm:text-base"
-                onClick={() => scrollTo("contacto")}>
-                Agendá tu diagnóstico gratuito <ArrowRight className="ml-2 h-4 w-4" />
-              </ShimmerButton>
+              <Link href="/apply">
+                <ShimmerButton shimmerColor="#22d3ee" background="oklch(0.14 0.05 168)" borderRadius="12px"
+                  className="w-full px-7 py-4 text-sm font-semibold sm:w-auto sm:text-base">
+                  Agendá tu diagnóstico gratuito <ArrowRight className="ml-2 h-4 w-4" />
+                </ShimmerButton>
+              </Link>
               <button className="flex items-center gap-2 text-sm text-white/55 transition-colors hover:text-white"
                 onClick={() => scrollTo("casos")}>
                 Ver casos de éxito <ChevronRight className="h-4 w-4" />
@@ -658,29 +664,16 @@ export default function Home() {
                     </span>
                   ))}
                 </div>
-                <div className="mx-auto flex max-w-md flex-col gap-3 sm:flex-row">
-                  <div className="relative flex-1">
-                    <Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white/25" />
-                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}
-                      placeholder="tu@empresa.com"
-                      className="w-full rounded-xl border border-white/10 bg-white/[0.05] py-3 pl-9 pr-4
-                                 text-sm text-white placeholder-white/25 outline-none transition-colors
-                                 focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/25" />
-                  </div>
-                  <ShimmerButton shimmerColor="#22d3ee" background="oklch(0.14 0.05 168)" borderRadius="12px"
-                    className="px-6 py-3 text-sm font-semibold whitespace-nowrap"
-                    onClick={() => {
-                      const t = email
-                        ? `mailto:hola@ciclo.ai?subject=Diagn%C3%B3stico%20gratuito&body=Email%3A%20${encodeURIComponent(email)}`
-                        : "mailto:hola@ciclo.ai";
-                      window.open(t, "_blank");
-                    }}>
-                    Agendá diagnóstico <ArrowRight className="ml-2 h-4 w-4" />
-                  </ShimmerButton>
+                <div className="flex justify-center">
+                  <Link href="/apply">
+                    <ShimmerButton shimmerColor="#22d3ee" background="oklch(0.14 0.05 168)"
+                      borderRadius="12px" className="px-8 py-4 text-base font-semibold">
+                      Completá el formulario <ArrowRight className="ml-2 h-5 w-5" />
+                    </ShimmerButton>
+                  </Link>
                 </div>
                 <p className="mt-5 text-xs text-white/25 md:text-sm">
-                  O escribinos directamente a{" "}
-                  <span className="text-cyan-400/60">hola@ciclo.ai</span>
+                  Gratis · Sin compromiso · Te contactamos en 24 hs
                 </p>
               </div>
             </AuroraBorder>
