@@ -193,9 +193,18 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
   }
   html {
     @apply font-sans;
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
+}
+
+/* Safe area for iPhone notch / home bar */
+.safe-area-x {
+  padding-left:  max(1rem, env(safe-area-inset-left));
+  padding-right: max(1rem, env(safe-area-inset-right));
 }

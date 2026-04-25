@@ -150,7 +150,7 @@ export default function ApplyPage() {
 
   /* -- Multi-step form -- */
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-[oklch(0.08_0_0)] px-5 py-16">
+    <main className="flex min-h-[100dvh] w-full flex-col items-center justify-center overflow-x-hidden bg-[oklch(0.08_0_0)] px-4 py-16 safe-area-x">
 
       {/* Logo */}
       <div className="mb-10 text-center">
@@ -384,23 +384,23 @@ function ResultScreen({
   ctaColor: string;
 }) {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-[oklch(0.08_0_0)] px-5 py-16">
+    <main className="flex min-h-[100dvh] w-full flex-col items-center justify-center overflow-x-hidden bg-[oklch(0.08_0_0)] px-6 py-16">
       <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
         className="w-full max-w-lg text-center">
         <div className={`mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full border ${iconBg}`}>
           {icon}
         </div>
-        <h1 className="mb-5 text-3xl font-black text-white md:text-4xl">{title}</h1>
+        <h1 className="mb-5 text-2xl font-black text-white sm:text-3xl md:text-4xl">{title}</h1>
         {lines.map((line, i) => (
-          <p key={i} className="mb-4 text-sm leading-relaxed text-white/55 md:text-base">{line}</p>
+          <p key={i} className="mb-4 break-words text-sm leading-relaxed text-white/55 md:text-base">{line}</p>
         ))}
-        <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+        <div className="mt-7 flex flex-col items-center gap-3">
           <a href="https://instagram.com/ciclo.ai" target="_blank" rel="noopener noreferrer"
-            className={`flex items-center gap-2 rounded-xl border px-5 py-3 text-sm transition-colors ${ctaColor}`}>
+            className={`flex w-full items-center justify-center gap-2 rounded-xl border px-5 py-3.5 text-sm transition-colors ${ctaColor}`}>
             <IgIcon className="h-4 w-4" /> Seguir en Instagram
           </a>
           <Link href="/"
-            className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-sm text-white/60 transition-colors hover:bg-white/10 hover:text-white">
+            className="flex w-full items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-5 py-3.5 text-sm text-white/60 transition-colors hover:bg-white/10 hover:text-white">
             Volver al inicio
           </Link>
         </div>
