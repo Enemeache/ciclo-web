@@ -13,8 +13,7 @@ import { ScrollRobot } from "@/components/magicui/scroll-robot";
 import { ShimmerButton } from "@/components/magicui/shimmer-button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { CosmicButton } from "@/components/ui/cosmic-button";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import {
