@@ -13,7 +13,8 @@ import { ScrollRobot } from "@/components/magicui/scroll-robot";
 import { ShimmerButton } from "@/components/magicui/shimmer-button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { motion, AnimatePresence } from "framer-motion";
+import { CosmicButton } from "@/components/ui/cosmic-button";
+import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import {
@@ -34,11 +35,11 @@ const NAV_LINKS = [
 ];
 
 const CICLO_STEPS = [
-  { letter: "C", title: "Consult",    description: "Diagnóstico profundo de procesos, datos y capacidades del equipo.", icon: Brain,    color: "text-cyan-400",    bg: "bg-cyan-400/10",    corner: "#22d3ee" },
-  { letter: "I", title: "Implement",  description: "Desarrollamos e integramos las soluciones de IA en los flujos existentes.", icon: Cpu,      color: "text-green-400",   bg: "bg-green-400/10",   corner: "#4ade80" },
-  { letter: "C", title: "Capacitate", description: "Entrenamos a los equipos en la práctica, no en la teoría.", icon: Users,    color: "text-emerald-400", bg: "bg-emerald-400/10", corner: "#34d399" },
-  { letter: "L", title: "Launch",     description: "Acompañamos el lanzamiento con soporte activo para maximizar adopción.", icon: Rocket,   color: "text-teal-400",    bg: "bg-teal-400/10",    corner: "#2dd4bf" },
-  { letter: "O", title: "Operate",    description: "Seguimiento continuo y optimización con el equipo ya autónomo.", icon: Settings, color: "text-sky-400",     bg: "bg-sky-400/10",     corner: "#38bdf8" },
+  { letter: "C", title: "Consultar",   duration: "Sem 1–3",   description: "Mapeamos la operación real. Mapa de oportunidades por ROI. Indicadores contractuales acordados antes de arrancar.", icon: Brain,    color: "text-cyan-400",    bg: "bg-cyan-400/10",    corner: "#22d3ee" },
+  { letter: "I", title: "Implementar", duration: "Sem 4–10",  description: "Sprints de 2 semanas. Construcción en producción desde el día 1. Con tu stack, tus datos, tu equipo real.",       icon: Cpu,      color: "text-green-400",   bg: "bg-green-400/10",   corner: "#4ade80" },
+  { letter: "C", title: "Capacitar",   duration: "Paralela",  description: "Formación por perfil mientras se construye. No en manual al final. Go-live sin curva de aprendizaje.",             icon: Users,    color: "text-emerald-400", bg: "bg-emerald-400/10", corner: "#34d399" },
+  { letter: "L", title: "Liberar",     duration: "Sem 10–14", description: "Transferencia gradual con red de seguridad. Tu equipo opera, nosotros monitoreamos. Primer reporte de adopción.",  icon: Rocket,   color: "text-teal-400",    bg: "bg-teal-400/10",    corner: "#2dd4bf" },
+  { letter: "O", title: "Operar",      duration: "Mes 4+",    description: "Acompañamiento mensual. Reporte de las 3 métricas contractuales. Nuevas oportunidades. Sin desaparecer.",          icon: Settings, color: "text-sky-400",     bg: "bg-sky-400/10",     corner: "#38bdf8" },
 ];
 
 const STATS = [
@@ -440,8 +441,13 @@ export default function Home() {
                                 bg-white/[0.03] p-4 transition-all hover:border-white/15
                                 hover:-translate-y-1 duration-300 h-full md:p-5">
                   <CornerAccents color={step.corner} />
-                  <div className={cn("mb-3 flex h-11 w-11 items-center justify-center rounded-xl", step.bg)}>
-                    <span className={cn("text-xl font-black", step.color)}>{step.letter}</span>
+                  <div className="mb-3 flex items-center justify-between">
+                    <div className={cn("flex h-11 w-11 items-center justify-center rounded-xl", step.bg)}>
+                      <span className={cn("text-xl font-black", step.color)}>{step.letter}</span>
+                    </div>
+                    <span className={cn("rounded-full px-2 py-0.5 font-mono text-[9px] font-semibold tracking-wider", step.bg, step.color)}>
+                      {step.duration}
+                    </span>
                   </div>
                   <div className={cn("mb-3 flex h-7 w-7 items-center justify-center rounded-lg", step.bg)}>
                     <step.icon className={cn("h-3.5 w-3.5", step.color)} />
