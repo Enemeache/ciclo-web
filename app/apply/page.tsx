@@ -5,7 +5,7 @@ import { ShimmerButton } from "@/components/magicui/shimmer-button";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import {
-  ArrowRight, ArrowLeft, CheckCircle2,
+  ArrowRight, ArrowLeft, CheckCircle2, Calendar,
   User, Zap, Users, DollarSign, Heart,
 } from "lucide-react";
 
@@ -112,6 +112,8 @@ export default function ApplyPage() {
 
   const firstName = form.nombre.trim().split(" ")[0] || "amigo";
 
+  const CALENDAR = "https://calendar.app.google/bhsNzw4oyyxmenLG9";
+
   /* -- Result screens -- */
   if (result === "success") {
     return (
@@ -120,9 +122,10 @@ export default function ApplyPage() {
         iconBg="bg-green-500/15 border-green-500/30"
         title={`¡Perfecto, ${firstName}! 🚀`}
         lines={[
-          "Ya tenemos todo lo que necesitamos. Nos vamos a poner en contacto muy pronto para agendar tu diagnóstico gratuito y arrancar a trabajar juntos.",
-          "Mientras tanto, seguinos en Instagram para ver casos reales y aprender sobre IA aplicada a negocios.",
+          "Ya estás calificado. El siguiente paso es agendar tu diagnóstico gratuito — una llamada de 30 minutos con el founder para mapear tu negocio y ver qué oportunidades reales hay.",
+          "Sin compromiso. Sin costo. Con resultados claros.",
         ]}
+        calendarUrl={CALENDAR}
         ctaColor="border-green-500/30 bg-green-500/10 text-green-300 hover:bg-green-500/15"
       />
     );
@@ -375,13 +378,14 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
 }
 
 function ResultScreen({
-  icon, iconBg, title, lines, ctaColor,
+  icon, iconBg, title, lines, ctaColor, calendarUrl,
 }: {
   icon: React.ReactNode;
   iconBg: string;
   title: string;
   lines: (string | React.ReactNode)[];
   ctaColor: string;
+  calendarUrl?: string;
 }) {
   return (
     <main className="flex min-h-[100dvh] w-full flex-col items-center justify-center overflow-x-hidden bg-[oklch(0.08_0_0)] px-6 py-16">
@@ -395,6 +399,12 @@ function ResultScreen({
           <p key={i} className="mb-4 break-words text-sm leading-relaxed text-white/55 md:text-base">{line}</p>
         ))}
         <div className="mt-7 flex flex-col items-center gap-3">
+          {calendarUrl && (
+            <a href={calendarUrl} target="_blank" rel="noopener noreferrer"
+              className="flex w-full items-center justify-center gap-2 rounded-xl border border-green-400/50 bg-green-500/15 px-5 py-4 text-sm font-semibold text-green-300 transition-colors hover:bg-green-500/25">
+              <Calendar className="h-4 w-4" /> Reservar diagnóstico gratuito
+            </a>
+          )}
           <a href="https://instagram.com/ciclo.ai" target="_blank" rel="noopener noreferrer"
             className={`flex w-full items-center justify-center gap-2 rounded-xl border px-5 py-3.5 text-sm transition-colors ${ctaColor}`}>
             <IgIcon className="h-4 w-4" /> Seguir en Instagram
