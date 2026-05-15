@@ -715,7 +715,7 @@ export default function Home() {
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                   </svg>
                 </a>
-                <a href="mailto:hola@ciclo.ai"
+                <a href="mailto:hola@metodociclo.com"
                   className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/[0.08]
                              bg-white/[0.04] text-white/35 transition-colors hover:border-white/15 hover:text-white">
                   <Mail className="h-3.5 w-3.5" />
@@ -753,7 +753,7 @@ export default function Home() {
                   <button key={item.label} onClick={() => scrollTo(item.id)}
                     className="text-left text-sm text-white/25 transition-colors hover:text-white/60">{item.label}</button>
                 ))}
-                <a href="mailto:hola@ciclo.ai"
+                <a href="mailto:hola@metodociclo.com"
                   className="flex items-center gap-1.5 text-left text-sm text-white/25 transition-colors hover:text-white/60">
                   <MapPin className="h-3 w-3" /> Buenos Aires, Argentina
                 </a>

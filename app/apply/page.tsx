@@ -405,7 +405,7 @@ function ResultScreen({
               <Calendar className="h-4 w-4" /> Reservar diagnóstico gratuito
             </a>
           )}
-          <a href="https://instagram.com/ciclo.ai" target="_blank" rel="noopener noreferrer"
+          <a href="https://www.instagram.com/metodociclo" target="_blank" rel="noopener noreferrer"
             className={`flex w-full items-center justify-center gap-2 rounded-xl border px-5 py-3.5 text-sm transition-colors ${ctaColor}`}>
             <IgIcon className="h-4 w-4" /> Seguir en Instagram
           </a>
