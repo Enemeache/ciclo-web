@@ -94,6 +94,7 @@ export default function ApplyPage() {
 
   const handleSubmit = async () => {
     setSubmitting(true);
+    let outcome: "success" | "disqualified";
     try {
       const res  = await fetch("/api/leads", {
         method: "POST",
@@ -101,10 +102,15 @@ export default function ApplyPage() {
         body: JSON.stringify(form),
       });
       const data = await res.json();
-      setResult(data.calificado ? "success" : "disqualified");
+      outcome = data.calificado ? "success" : "disqualified";
     } catch {
       // fallback offline: decide by budget
-      setResult(form.presupuesto === "<1000" || form.acuerdo === "no" ? "disqualified" : "success");
+      outcome = form.presupuesto === "<1000" || form.acuerdo === "no" ? "disqualified" : "success";
+    }
+    try {
+      // Meta Pixel: Lead solo para leads calificados (los que ven el calendario)
+      if (outcome === "success") window.fbq?.("track", "Lead");
+      setResult(outcome);
     } finally {
       setSubmitting(false);
     }
